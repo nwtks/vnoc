@@ -1,11 +1,10 @@
 'use strict';
 
-function h(name, attrs) {
-  var children = [];
-  var arg = arguments;
-  for (var i = 2; i < arg.length; i += 1) {
-    flatten(children, arg[i]);
-  }
+var h = function (name, attrs) {
+  var args = [], len = arguments.length - 2;
+  while ( len-- > 0 ) args[ len ] = arguments[ len + 2 ];
+
+  var children = flatten([], args);
   if (typeof name === 'function') {
     return name(attrs || {}, children)
   }
@@ -14,14 +13,15 @@ function h(name, attrs) {
     attrs: attrs || {},
     children: children.filter(function (e) { return e != null; })
   }
-}
+};
 
-function flatten(dst, e) {
+var flatten = function (dst, e) {
   if (Array.isArray(e)) {
     e.forEach(function (v) { return flatten(dst, v); });
   } else {
     dst.push(e);
   }
-}
+  return dst
+};
 
 module.exports = h;

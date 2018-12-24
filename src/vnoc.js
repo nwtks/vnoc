@@ -1,22 +1,24 @@
 const h = (name, attrs, ...args) => {
-  const children = flatten([], args)
+  const children = flatten([], args);
   if (typeof name === 'function') {
-    return name(attrs || {}, children)
+    return name(attrs || {}, children);
   }
   return {
     name: name || 'div',
     attrs: attrs || {},
-    children: children.filter(e => e != null)
-  }
-}
+    children: children.filter((e) => e != null)
+  };
+};
 
 const flatten = (dst, e) => {
   if (Array.isArray(e)) {
-    e.forEach(v => flatten(dst, v))
+    e.forEach((v) => {
+      flatten(dst, v);
+    });
   } else {
-    dst.push(e)
+    dst.push(e);
   }
-  return dst
-}
+  return dst;
+};
 
-export default h
+export default h;

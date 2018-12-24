@@ -6,22 +6,24 @@ var h = function (name, attrs) {
 
   var children = flatten([], args);
   if (typeof name === 'function') {
-    return name(attrs || {}, children)
+    return name(attrs || {}, children);
   }
   return {
     name: name || 'div',
     attrs: attrs || {},
     children: children.filter(function (e) { return e != null; })
-  }
+  };
 };
 
 var flatten = function (dst, e) {
   if (Array.isArray(e)) {
-    e.forEach(function (v) { return flatten(dst, v); });
+    e.forEach(function (v) {
+      flatten(dst, v);
+    });
   } else {
     dst.push(e);
   }
-  return dst
+  return dst;
 };
 
 module.exports = h;

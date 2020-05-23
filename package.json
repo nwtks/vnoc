@@ -1,6 +1,6 @@
 {
-  "name": "vnoc",
-  "version": "0.1.2",
+  "name": "@nwtks/vnoc",
+  "version": "0.2.0",
   "description": "tiny virtual node data creator.",
   "license": "MIT",
   "main": "dist/vnoc.js",
@@ -9,7 +9,6 @@
     "dist"
   ],
   "author": "nwtks",
-  "homepage": "https://github.com/nwtks/vnoc",
   "repository": {
     "type": "git",
     "url": "https://github.com/nwtks/vnoc"
